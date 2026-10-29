@@ -9,12 +9,10 @@ function intToRoman(num) {
 
   let result = "";
 
-  for (let i = 0; i < values.length; ) {   // no i++ here
-    if (num >= values[i]) {
-      result += symbols[i];   // value fits → use it
-      num -= values[i];       // stay on the same i
-    } else {
-      i++;                    // doesn't fit → try the next smaller value
+  for (let i = 0; i < values.length; i++) {
+    while (num >= values[i]) {
+      result += symbols[i];   // add the symbol
+      num -= values[i];       // subtract its value
     }
   }
 
