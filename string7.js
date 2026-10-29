@@ -10,9 +10,11 @@ function intToRoman(num) {
   let result = "";
 
   for (let i = 0; i < values.length; i++) {
-    while (num >= values[i]) {
-      result += symbols[i];   // add the symbol
-      num -= values[i];       // subtract its value
+    const count = Math.floor(num / values[i]);   // how many times it fits
+
+    if (count > 0) {
+      result += symbols[i].repeat(count);        // add the symbol count times
+      num = num % values[i];                     // keep only the remainder
     }
   }
 
